@@ -18,7 +18,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-app.get("/", async (req, res) => {
+app.get("/hello", async (req, res) => {
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [
@@ -32,7 +32,7 @@ app.get("/", async (req, res) => {
     return res.json(completion.data.choices[0].message);
 });
 
-app.post("/", async (req, res) => {
+app.post("/sent-message", async (req, res) => {
     const { message } = req.body;
 
     if (!message) {
