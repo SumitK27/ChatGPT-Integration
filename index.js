@@ -29,7 +29,27 @@ app.get("/", async (req, res) => {
         ],
     });
 
-    res.json(completion.data.choices[0].message);
+    return res.json(completion.data.choices[0].message);
+});
+
+app.post("/", async (req, res) => {
+    const { message } = req.body;
+
+    if (!message) {
+        res.status(400).json({ message: "Missing message" });
+        return;
+    }
+
+    const completion = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [
+            {
+                role: "user",
+                content: message,
+            },
+        ],
+    });
+    return res.json(completion.data.choices[0].message);
 });
 
 app.listen(port, () => {
