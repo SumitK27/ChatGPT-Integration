@@ -12,4 +12,11 @@ npm install
 
 1. Rename the `.env.example` file to `.env` and fill in the `ORGANIZATION`, `API_KEY` and `PORT` variables.
 2. Run the application with `npm start`.
-3. Open the browser and go to `http://localhost:3000/` to see the application running.
+3. Open the browser and go to `http://localhost:3000/hello` to see the application running.
+
+## HTTP Requests
+
+| HTTP Method | Endpoint        | Parameters | Body                | Description                                 |
+| ----------- | --------------- | ---------- | ------------------- | ------------------------------------------- |
+| GET         | `/hello`        | -          | -                   | Returns a simple message.                   |
+| POST        | `/send-message` | -          | `{message: string}` | Returns the response from the Chat GPT API. |
